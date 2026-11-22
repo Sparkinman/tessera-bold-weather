@@ -1,0 +1,11 @@
+# What a screen gets when it takes this plugin: the component, and bold Roboto (the screen's own typeface) in four sizes
+# above the screen's own fonts. Tessera includes this file from the screen's <name>.plugins.yaml and adds this plugin's
+# components/ folder as an ESPHome external component.
+font:
+  - { id: bold_weather_32, file: "${FONT_DIR}/Roboto-700.ttf", size: 32, bpp: 4, glyphs: &glyphs " !%&'()+,-./0123456789:;?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz°" }
+  - { id: bold_weather_48, file: "${FONT_DIR}/Roboto-700.ttf", size: 48, bpp: 4, glyphs: *glyphs }
+  - { id: bold_weather_72, file: "${FONT_DIR}/Roboto-700.ttf", size: 72, bpp: 4, glyphs: *glyphs }
+  - { id: bold_weather_108, file: "${FONT_DIR}/Roboto-700.ttf", size: 108, bpp: 4, glyphs: *glyphs }
+
+bold_weather:
+  fonts: [bold_weather_32, bold_weather_48, bold_weather_72, bold_weather_108]

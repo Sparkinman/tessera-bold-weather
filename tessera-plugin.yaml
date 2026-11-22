@@ -1,0 +1,36 @@
+# Bold weather: a weather entity in large bold Roboto. The tile shows the weather now and the coming days; a tap opens a
+# card with a large row per day, and a tap on a day shows that day large. For the larger 7" and 10" touchscreens.
+id: bold_weather
+version: 0.2.2
+api: "0.18"
+icon: weather-partly-cloudy
+maintainer: Paul McNeil
+license: MIT
+stage: beta
+topics: [weather]
+requires:
+  esphome: 2026.6.2
+boards: any
+flash_kb: 450
+
+permissions:
+  # The daily and hourly forecast: Home Assistant's weather.get_forecasts, asked for the tile's weather entity.
+  ha_commands: ["call_service:weather.get_forecasts"]
+
+tiles:
+  - id: forecast
+    name: tile_name
+    icon: weather-partly-cloudy
+    sizes: { min: 2x1, max: 6x6 }
+    # About thirty labels: the weather now and up to seven day columns.
+    memory: 3500
+    example: tile_example
+    domains: [weather]
+    attributes: [temperature, apparent_temperature, humidity, wind_speed, wind_bearing, wind_speed_unit, pressure,
+                 pressure_unit, dew_point, uv_index, cloud_coverage, precipitation_unit]
+    options:
+      - { id: label, kind: text, label: label, hint: label_hint }
+
+cards:
+  # The weather now, the coming hours and a row per day; a tap on a day shows it in full.
+  - { id: week, name: card_name, wide: true }
